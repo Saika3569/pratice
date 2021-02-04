@@ -7,6 +7,12 @@ class CouponsController < ApplicationController
 
   def create
     randen = 10.times.map { rand(1..9) }.join.to_i 
+    @coupon = Coupon.new(coupon_params)
+    if @coupon.save
+      redirect_to coupons_path, notice: "「已成功兌換，您的兌換券序號為#{randen}」"
+    else
+      render :index
+    end
 
   end
 

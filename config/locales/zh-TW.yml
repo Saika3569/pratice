@@ -1,0 +1,10 @@
+zh-TW:
+  activerecord:
+    attributes:
+      coupon:
+        taiwanid: "身份證字號"
+    errors:
+      models:
+        coupon:
+          attributes:
+            taiwanid:

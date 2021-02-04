@@ -1,4 +1,15 @@
 <h1>領取優惠卷</h1>
+
+<% if @coupon.errors.present? %>
+  <% @coupon.errors.messages.values.each do |msg| %>
+    <div>
+      <%= msg.join("") %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
 <%= form_for @coupon,url: coupons_path  do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -6,5 +17,5 @@
   <%= f.text_field :phone %>
   <%= f.label :taiwanid %>
   <%= f.text_field :taiwanid %>
-  <%= f.submit %>
+  <%= f.submit '確認' %>
 <% end %>

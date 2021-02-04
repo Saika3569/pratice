@@ -1,0 +1,10 @@
+<h1>領取優惠卷</h1>
+<%= form_for @coupon,url: coupons_path  do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+  <%= f.label :taiwanid %>
+  <%= f.text_field :taiwanid %>
+  <%= f.submit %>
+<% end %>

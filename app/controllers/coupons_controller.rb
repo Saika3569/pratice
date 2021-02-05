@@ -15,7 +15,7 @@ class CouponsController < ApplicationController
       @coupon.save 
       redirect_to coupons_path, notice: "「已成功兌換，您的兌換券序號為#{randen}」"
     elsif 
-      redirect_to coupons_path, notice: "換過囉#{@coupon.created_at}"
+      redirect_to coupons_path, notice: "你已經在#{@coupon.created_at.strftime('%y年%m月%d日')}換過囉"
     else
       render :index 
     end

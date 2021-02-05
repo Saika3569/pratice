@@ -11,18 +11,14 @@ class CouponsController < ApplicationController
       coupon.name = coupon_params[:name]
       coupon.phone = coupon_params[:phone]
     end
-    if @coupon.new_record?
-      @coupon.save 
+    if @coupon.new_record? && @coupon.save
       redirect_to coupons_path, notice: "「已成功兌換，您的兌換券序號為#{randen}」"
-    elsif 
+    elsif @coupon.persisted?
       redirect_to coupons_path, notice: "你已經在#{@coupon.created_at.strftime('%y年%m月%d日')}換過囉"
     else
       render :index 
     end
 
-  end
-
-  def show
   end
 
   private

@@ -6,12 +6,18 @@ class CouponsController < ApplicationController
   end
 
   def create
-    randen = 10.times.map { rand(1..9) }.join.to_i 
-    @coupon = Coupon.new(coupon_params)
-    if @coupon.save
+    randen = 10.times.map { rand(0..9) }.join.to_i 
+    @coupon = Coupon.find_or_initialize_by(taiwanid: coupon_params[:taiwanid]) do |coupon|
+      coupon.name = coupon_params[:name]
+      coupon.phone = coupon_params[:phone]
+    end
+    if @coupon.new_record?
+      @coupon.save 
       redirect_to coupons_path, notice: "「已成功兌換，您的兌換券序號為#{randen}」"
+    elsif 
+      redirect_to coupons_path, notice: "換過囉#{@coupon.created_at}"
     else
-      render :index
+      render :index 
     end
 
   end
@@ -22,6 +28,6 @@ class CouponsController < ApplicationController
   private
   
   def coupon_params
-    params.require(:coupon).permit(:name, :phone, :taiwanid)
+    params[:coupon]
   end
 end

@@ -11,11 +11,18 @@
 
 
 <%= form_for @coupon,url: coupons_path  do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  <%= f.label :taiwanid %>
-  <%= f.text_field :taiwanid %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div>
+    <%= f.label :taiwanid %>
+    <%= f.text_field :taiwanid %>
+  </div>
+
   <%= f.submit '確認' %>
 <% end %>
